@@ -1,5 +1,5 @@
 {
-    "name": "myPHPNotes/LinkedInSDK",
+    "name": "aymericdev/LinkedInSDK",
     "require": {
 	  	"guzzlehttp/guzzle": "~6.0",
 	  	"ext-json": "*",
