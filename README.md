@@ -4,7 +4,7 @@ Author: myPHPnotes
 
 use
 ```
-composer require aymericdev/LinkedInSDK
+composer require aymericdev/linkedin-sdk-php
 ```
 
 
