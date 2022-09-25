@@ -3,7 +3,7 @@
 namespace myPHPNotes;
 
 use GuzzleHttp\Client;
-class LinkedIn  
+class LinkedIn
 {
     protected $app_id;
     protected $app_secret;
@@ -36,7 +36,7 @@ class LinkedIn
             'grant_type' => 'authorization_code',
         ];
         $response = $this->curl($url,http_build_query($params), "application/x-www-form-urlencoded");
-        $accessToken = json_decode($response)->access_token;
+        $accessToken = json_decode($response);
         return $accessToken;
     }
     public function getPerson($accessToken)
@@ -61,7 +61,7 @@ class LinkedIn
         $company_pages = "https://api.linkedin.com/v1/companies?format=json&is-company-admin=true&oauth2_access_token=" . trim($accessToken);
         $pages = $this->curl($company_pages,json_encode([]), "application/json", false);
         return json_decode($pages);
-        
+
     }
     public function linkedInTextPost($accessToken , $person_id,  $message, $visibility = "PUBLIC")
     {
@@ -76,7 +76,7 @@ class LinkedIn
                     ],
                     "shareMediaCategory" => "NONE",
                 ],
-                
+
             ],
             "visibility" => [
                 "com.linkedin.ugc.MemberNetworkVisibility" => $visibility,
@@ -103,13 +103,13 @@ class LinkedIn
                                                 "text" => substr($link_desc, 0, 200),
                                             ],
                                             "originalUrl" =>  $link_url,
-                    
+
                                             "title" => [
                                                 "text" => $link_title,
                                             ],
                                         ]],
                 ],
-                
+
             ],
             "visibility" => [
                 "com.linkedin.ugc.MemberNetworkVisibility" => $visibility,
@@ -144,7 +144,7 @@ class LinkedIn
  ;
         // dump($photo);
 
-        
+
         $client =new Client();
         $response = $client->request('PUT', $uploadURL, [
             'headers' => [ 'Authorization' => 'Bearer ' . $accessToken ],
@@ -171,13 +171,13 @@ class LinkedIn
                                                 "text" => substr($image_description, 0, 200),
                                             ],
                                             "media" =>  $asset_id,
-                    
+
                                             "title" => [
                                                 "text" => $image_title,
                                             ],
                                         ]],
                 ],
-                
+
             ],
             "visibility" => [
                 "com.linkedin.ugc.MemberNetworkVisibility" => $visibility ,
