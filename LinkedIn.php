@@ -36,7 +36,7 @@ class LinkedIn
             'grant_type' => 'authorization_code',
         ];
         $response = $this->curl($url, http_build_query($params), "application/x-www-form-urlencoded");
-        $accessToken = json_decode($response)->access_token;
+        $accessToken = json_decode($response);
         return $accessToken;
     }
     public function getPerson($accessToken)
